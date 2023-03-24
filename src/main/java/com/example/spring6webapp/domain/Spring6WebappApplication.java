@@ -1,4 +1,4 @@
-package com.example.spring6webapp;
+package com.example.spring6webapp.domain;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
