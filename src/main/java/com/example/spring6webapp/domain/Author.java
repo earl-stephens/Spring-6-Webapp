@@ -1,6 +1,6 @@
 package com.example.spring6webapp.domain;
 
-import java.util.Objects;
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
@@ -19,7 +19,7 @@ public class Author {
 	private String lastName;
 	
 	@ManyToMany(mappedBy = "authors")
-	private Set<Book> books;
+	private Set<Book> books = new HashSet<>();
 	
 	public Set<Book> getBooks() {
 		return books;
@@ -54,19 +54,15 @@ public class Author {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return getId() != null ? getId().hashCode() : 0;
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Author other = (Author) obj;
-		return Objects.equals(id, other.id);
+		if (this == obj) return true;
+		if(!(obj instanceof Author)) return false;
+		Author author = (Author) obj;
+		return getId() != null ? getId().equals(author.getId()) : author.getId() == null;
 	}
 	
 }
