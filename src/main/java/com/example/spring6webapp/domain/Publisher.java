@@ -1,16 +1,9 @@
 package com.example.spring6webapp.domain;
 
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;;
 
 @Entity
 public class Publisher {
@@ -23,6 +16,10 @@ public class Publisher {
 	private String city;
 	private String state;
 	private String zip;
+	
+	//One publisher to many books
+	@OneToMany(mappedBy = "publisher")
+	private Set<Book> books;
 	
 	public Long getId() {
 		return id;

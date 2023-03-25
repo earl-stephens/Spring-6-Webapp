@@ -3,13 +3,7 @@ package com.example.spring6webapp.domain;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
 @Entity
 public class Book {
@@ -20,6 +14,7 @@ public class Book {
 	private String title;
 	private String isbn;
 	
+
 	@ManyToMany
 	@JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book _id"),
 			inverseJoinColumns = @JoinColumn(name = "author_id"))
@@ -31,7 +26,17 @@ public class Book {
 	public void setAuthors(Set<Author> authors) {
 		this.authors = authors;
 	}
+	
+	//many books to one publisher
+	@ManyToOne
+	private Publisher publisher;
 
+	public Publisher getPublisher() {
+		return publisher;
+	}
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
 	public Long getId() {
 		return id;
 	}
