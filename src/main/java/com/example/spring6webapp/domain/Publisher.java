@@ -3,7 +3,7 @@ package com.example.spring6webapp.domain;
 import java.util.Objects;
 import java.util.Set;
 
-import jakarta.persistence.*;;
+import jakarta.persistence.*;
 
 @Entity
 public class Publisher {
